@@ -29,5 +29,6 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'email_verified_at' => now(),
         ]);
+        User::factory(20)->create();
     }
 }

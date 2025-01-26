@@ -23,5 +23,6 @@ class ElectionSeeder extends Seeder
             'start_date' => '2024-01-26',
             'end_date' => '2024-01-27',
         ]);
+        Election::factory(20)->create();
     }
 }

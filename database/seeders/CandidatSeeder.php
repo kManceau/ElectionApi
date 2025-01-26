@@ -21,5 +21,6 @@ class CandidatSeeder extends Seeder
             'name' => 'Olivier Besancenot',
             'age' => 50
         ]);
+        Candidat::factory(20)->create();
     }
 }
