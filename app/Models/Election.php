@@ -15,4 +15,9 @@ class Election extends Model
         'start_date',
         'end_date',
     ];
+
+    public function candidats()
+    {
+        return $this->belongsToMany(Candidat::class);
+    }
 }

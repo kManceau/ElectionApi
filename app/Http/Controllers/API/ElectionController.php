@@ -13,7 +13,7 @@ class ElectionController extends Controller
      */
     public function index()
     {
-        $elections = Election::all();
+        $elections = Election::with(['candidats'])->get();
         return response()->json($elections);
     }
 
@@ -40,6 +40,7 @@ class ElectionController extends Controller
      */
     public function show(Election $election)
     {
+        $election->load('candidats');
         return response()->json($election);
     }
 

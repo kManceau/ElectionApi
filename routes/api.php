@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CandidatController;
+use App\Http\Controllers\API\CandidatElectionController;
 use App\Http\Controllers\API\ElectionController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::get('/candidats/{candidat}', [CandidatController::class, 'show'])->name('
 Route::post('/candidats', [CandidatController::class, 'store'])->name('candidats.store');
 Route::put('/candidats/{candidat}', [CandidatController::class, 'update'])->name('candidats.update');
 Route::delete('/candidats/{candidat}', [CandidatController::class, 'destroy'])->name('candidats.destroy');
+
+Route::get('/add-candidat/{candidat}/{election}', [CandidatElectionController::class, 'addCandidatToElection'])->name('addCandidatToElection');

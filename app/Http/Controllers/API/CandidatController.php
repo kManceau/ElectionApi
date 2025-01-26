@@ -13,7 +13,7 @@ class CandidatController extends Controller
      */
     public function index()
     {
-        $candidats = Candidat::all();
+        $candidats = Candidat::with(['elections'])->get();
         return response()->json($candidats);
     }
 
@@ -37,6 +37,7 @@ class CandidatController extends Controller
      */
     public function show(Candidat $candidat)
     {
+        $candidat->load(['elections']);
         return response()->json($candidat);
     }
 

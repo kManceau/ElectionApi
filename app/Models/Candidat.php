@@ -14,4 +14,9 @@ class Candidat extends Model
         'name',
         'age',
     ];
+
+    public function elections()
+    {
+        return $this->belongsToMany(Election::class);
+    }
 }
