@@ -8,6 +8,23 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+    public function currentUser()
+    {
+        return response()->json([
+           'meta' => [
+               'code' => 200,
+               'status' => 'success',
+           ],
+           'data' => [
+               'user' => auth()->user(),
+           ],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */

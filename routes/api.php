@@ -1,11 +1,20 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CandidatController;
 use App\Http\Controllers\API\CandidatElectionController;
 use App\Http\Controllers\API\ElectionController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VoteController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/currentuser', [UserController::class, 'currentUser']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
 
 Route::get('/users', [UserController::class, 'index'])->name('users.list');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
