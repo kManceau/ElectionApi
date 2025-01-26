@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('candidats', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('age');
         });
     }
 

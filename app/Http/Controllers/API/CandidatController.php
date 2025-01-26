@@ -13,7 +13,8 @@ class CandidatController extends Controller
      */
     public function index()
     {
-        //
+        $candidats = Candidat::all();
+        return response()->json($candidats);
     }
 
     /**
@@ -21,7 +22,14 @@ class CandidatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formFields = $request->validate([
+            'name' => 'required|string',
+            'age' => 'required|integer',
+        ]);
+        $candidat = new Candidat();
+        $candidat->fill($formFields);
+        $candidat->save();
+        return response()->json($candidat);
     }
 
     /**
@@ -29,7 +37,7 @@ class CandidatController extends Controller
      */
     public function show(Candidat $candidat)
     {
-        //
+        return response()->json($candidat);
     }
 
     /**
@@ -37,7 +45,12 @@ class CandidatController extends Controller
      */
     public function update(Request $request, Candidat $candidat)
     {
-        //
+        $formFields = $request->validate([
+            'name' => 'string',
+            'age' => 'integer',
+        ]);
+        $candidat->update($formFields);
+        return response()->json($candidat);
     }
 
     /**
@@ -45,6 +58,7 @@ class CandidatController extends Controller
      */
     public function destroy(Candidat $candidat)
     {
-        //
+        $candidat->delete();
+        return response()->json(['success' => 'Candidat Supprimé.']);
     }
 }
