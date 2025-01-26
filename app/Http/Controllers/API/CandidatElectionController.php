@@ -11,6 +11,10 @@ class CandidatElectionController extends Controller
     public function addCandidatToElection(Candidat $candidat, Election $election)
     {
         $candidat->elections()->attach($election);
-        return response()->json('Candidat ajouté à l\'élection');
+        return response()->json([
+            'success' => 'Candidat ajouté à l\'élection',
+            'candidat' => $candidat,
+            'election' => $election,
+        ]);
     }
 }

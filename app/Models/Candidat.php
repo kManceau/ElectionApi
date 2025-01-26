@@ -19,4 +19,9 @@ class Candidat extends Model
     {
         return $this->belongsToMany(Election::class);
     }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

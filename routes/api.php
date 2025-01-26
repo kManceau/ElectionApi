@@ -4,6 +4,7 @@ use App\Http\Controllers\API\CandidatController;
 use App\Http\Controllers\API\CandidatElectionController;
 use App\Http\Controllers\API\ElectionController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\VoteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/users', [UserController::class, 'index'])->name('users.list');
@@ -25,3 +26,7 @@ Route::put('/candidats/{candidat}', [CandidatController::class, 'update'])->name
 Route::delete('/candidats/{candidat}', [CandidatController::class, 'destroy'])->name('candidats.destroy');
 
 Route::get('/add-candidat/{candidat}/{election}', [CandidatElectionController::class, 'addCandidatToElection'])->name('addCandidatToElection');
+
+Route::get('/vote/{user}/{election}/{candidat}', [VoteController::class, 'addVote'])->name('addVote');
+Route::get('/vote/{election}', [VoteController::class, 'getVote'])->name('getVote');
+Route::get('/results/{election}', [VoteController::class, 'getResults'])->name('getResults');
